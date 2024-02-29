@@ -1,0 +1,20 @@
+{% extends 'aplicacion/home.html' %}
+
+{% block titulo %}
+<table>
+    <tr>
+        <td width="160"><h1>Autores</h1></td>
+        <td>
+            <a
+             href="{% url 'autor_create'%}"
+             class ="btn btn-primary btn-sm"
+             ><i class="fa fa-plus fa-lg" title="Añadir nuevo"> </i>
+        </a>
+        </td>
+    </tr>
+</table>                
+{% endblock titulo %}
+
+{% block contenido %}
+
+{% endblock contenido %}

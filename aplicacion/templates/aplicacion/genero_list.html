@@ -1,0 +1,50 @@
+{% extends 'aplicacion/home.html' %}
+{% block titulo %}
+<table>
+    <tr>
+        <td width="160"><h1>Generos</h1></td>
+        <td>
+            <a
+             href="{% url 'genero_create'%}"
+             class ="btn btn-primary btn-sm"
+             ><i class="fa fa-plus fa-lg" title="Añadir nuevo"> </i>
+        </a>
+        </td>
+    </tr>
+</table>                          
+{% endblock titulo %}
+{% block contenido %}
+<table class="table table-striped "> 
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for c in genero_list %}
+    <tr>
+        <td>{{ c.id}}</td>
+        <td>{{ c.nombre}}</td>
+        <td>{{ c.descripcion}}</td>
+        <!-- Iconos para editar y eliminar registros-->
+        <td>
+            <a
+              href="{% url 'genero_update' c.id %}"
+              class="btn btn-primary"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              ><i class="fa fa-edit fa-sm" title="Editar"></i>
+            </a>
+            <a
+              href="{% url 'genero_delete' c.id %}"
+              class="btn btn-danger"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              ><i class="fa fa-trash fa-sm" title="Borrar"></i>
+            </a>
+          </td>    
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

@@ -1,0 +1,14 @@
+{% extends 'aplicacion/home.html' %}
+{% block titulo %}
+<h1>Buscar Libros</h1>                
+{% endblock titulo %}
+
+{% block contenido %}
+
+<form action= "{% url 'buscarLibros' %}" method="get">
+    {% csrf_token %}
+
+    <p>Genero a buscar:<input type="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Buscar">
+</form>
+{% endblock contenido %}

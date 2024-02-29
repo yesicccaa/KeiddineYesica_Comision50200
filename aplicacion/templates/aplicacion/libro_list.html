@@ -1,0 +1,58 @@
+{% extends 'aplicacion/home.html' %}
+{% block titulo %}
+<table>
+    <tr>
+        <td width="160"><h1>Libros</h1></td>
+        <td>
+            <a
+             href="{% url 'libro_create'%}"
+             class ="btn btn-primary btn-sm"
+             ><i class="fa fa-plus fa-lg" title="Añadir nuevo"> </i>
+        </a>
+        </td>
+    </tr>
+</table>                              
+{% endblock titulo %}
+{% block contenido %}
+<table class="table table-striped "> 
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Genero</th>
+            <th>Lanzamiento</th>
+            <th>Sintaxis</th>
+   
+{% for c in libro_list %}
+    <tr>
+        <td>{{ c.id}}</td>
+        <td>{{ c.titulo}}</td>
+        <td>{{ c.autor}}</td>
+        <td>{{ c.genero}}</td>
+        <td>{{ c.año_publicacion}}</td>
+        <td>{{ c.sintaxis}}</td>
+        
+        <!-- Iconos para editar y eliminar registros-->
+         <td>
+            <a
+              href="{% url 'libro_update' c.id %}"
+              class="btn btn-primary"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              ><i class="fa fa-edit fa-sm" title="Editar"></i>
+            </a>
+            <a
+              href="{% url 'libro_delete' c.id %}"
+              class="btn btn-danger"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              ><i class="fa fa-trash fa-sm" title="Borrar"></i>
+            </a>
+          </td>    
+        </tr>
+    </thead>
+    <tbody>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}
